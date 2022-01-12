@@ -1,5 +1,7 @@
 package br.com.leonardo.escolalima.controllers;
 
+import java.util.List;
+
 import br.com.leonardo.escolalima.models.Aluno;
 import br.com.leonardo.escolalima.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +28,12 @@ public class AlunoController {
         System.out.println(aluno);
         repository.salvar(aluno);
         return "redirect:/";
+    }
+
+    @GetMapping("/aluno/listar")
+    public String listar(Model model){
+        List<Aluno> alunos = repository.obterTodosAlunos();
+        model.addAttribute("alunos", alunos);
+        return "aluno/listar";
     }
 }

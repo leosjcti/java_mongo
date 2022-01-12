@@ -1,10 +1,14 @@
 package br.com.leonardo.escolalima.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.leonardo.escolalima.codecs.AlunoCodec;
 import br.com.leonardo.escolalima.models.Aluno;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.codecs.Codec;
@@ -15,8 +19,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AlunoRepository {
 
-    public void salvar(Aluno aluno) {
+    private MongoClient cliente;
+    private MongoDatabase bancoDeDados;
 
+    private void criarConexao() {
         Codec<Document> codec = MongoClient.getDefaultCodecRegistry().get(Document.class);
         AlunoCodec alunoCodec = new AlunoCodec(codec);
 
@@ -24,11 +30,36 @@ public class AlunoRepository {
 
         MongoClientOptions options = MongoClientOptions.builder().codecRegistry(registro).build();
 
-        MongoClient cliente = new MongoClient("localhost:27017", options);
-        MongoDatabase bancoDeDados = cliente.getDatabase("test");
-        MongoCollection<Aluno> alunos = bancoDeDados.getCollection("alunos", Aluno.class);
-        alunos.insertOne(aluno); 
+        this.cliente =  new MongoClient("localhost:27017", options);
+        this.bancoDeDados = cliente.getDatabase("test");
+    }
+
+
+    public void salvar(Aluno aluno) {
+        criarConexao();
+        MongoCollection<Aluno> alunos = this.bancoDeDados.getCollection("alunos", Aluno.class);
+        alunos.insertOne(aluno);
         cliente.close();
     }
+
+
+    public List<Aluno> obterTodosAlunos(){
+
+        criarConexao();
+        MongoCollection<Aluno> alunos = this.bancoDeDados.getCollection("alunos", Aluno.class);
+
+        MongoCursor<Aluno> resultado = alunos.find().iterator();
+
+        List<Aluno> alunosEncontrados = new ArrayList<>();
+        while(resultado.hasNext()){
+            Aluno aluno = resultado.next();
+            alunosEncontrados.add(aluno);
+        }
+        cliente.close();
+
+        return alunosEncontrados;
+    }
+
+
 
 }
