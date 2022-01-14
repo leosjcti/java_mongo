@@ -5,14 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2ff5c83-b0f9-4c7f-8219-d7bebefa35fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/controllers/HabilidadeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/habilidade/cadastrar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/controllers/NotaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/aluno/visualizar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/nota/cadastrar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/codecs/AlunoCodec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/codecs/AlunoCodec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/controllers/AlunoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/controllers/AlunoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/models/Aluno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/models/Aluno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/models/Curso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/models/Curso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/repository/AlunoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/repository/AlunoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/models/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/models/Habilidade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/models/Nota.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/models/Nota.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/aluno/listar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/aluno/listar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/models/Curso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/models/Curso.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/repository/AlunoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/repository/AlunoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/codecs/AlunoCodec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/codecs/AlunoCodec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/models/Aluno.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/models/Aluno.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/models/Habilidade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/models/Habilidade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/models/Nota.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/leonardo/escolalima/models/Nota.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/aluno/listar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/aluno/listar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -95,5 +101,42 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/codecs/AlunoCodec.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/codecs/AlunoCodec.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/repository/AlunoRepository.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/codecs/AlunoCodec.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/codecs/AlunoCodec.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/leonardo/escolalima/codecs/AlunoCodec.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

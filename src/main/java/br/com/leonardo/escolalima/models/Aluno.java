@@ -28,6 +28,13 @@ public class Aluno {
         return habilidades;
     }
 
+    public List<Nota> getNotas() {
+        if(notas == null) {
+            notas = new ArrayList<Nota>();
+        }
+        return notas;
+    }
+
     public Aluno criarId() {
         setId(new ObjectId());
         return this;
@@ -37,6 +44,13 @@ public class Aluno {
         List<Habilidade> habilidades = aluno.getHabilidades();
         habilidades.add(habilidade);
         aluno.setHabilidades(habilidades);
+        return aluno;
+    }
+
+    public Aluno adicionar(Aluno aluno, Nota nota) {
+        List<Nota> notas = aluno.getNotas();
+        notas.add(nota);
+        aluno.setNotas(notas);
         return aluno;
     }
 }

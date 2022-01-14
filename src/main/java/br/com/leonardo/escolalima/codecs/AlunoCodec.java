@@ -7,6 +7,7 @@ import java.util.List;
 import br.com.leonardo.escolalima.models.Aluno;
 import br.com.leonardo.escolalima.models.Curso;
 import br.com.leonardo.escolalima.models.Habilidade;
+import br.com.leonardo.escolalima.models.Nota;
 import org.bson.BsonReader;
 import org.bson.BsonString;
 import org.bson.BsonValue;
@@ -59,6 +60,24 @@ public class AlunoCodec implements CollectibleCodec<Aluno> {
             aluno.setCurso(new Curso(nomeCurso));
         }
 
+        List<Double> notas = (List<Double>) document.get("notas");
+        if (notas != null) {
+            List<Nota> notasDoAluno = new ArrayList<>();
+            for (Double nota : notas) {
+                notasDoAluno.add(new Nota(nota));
+            }
+            aluno.setNotas(notasDoAluno);
+        }
+
+        List<Document> habilidades = (List<Document>) document.get("habilidades");
+        if(habilidades != null) {
+            List<Habilidade> habilidadesDoAluno = new ArrayList<>();
+            for (Document documentHabilidade : habilidades) {
+                habilidadesDoAluno.add(new Habilidade(documentHabilidade.getString("nome"), documentHabilidade.getString("nivel")));
+            }
+            aluno.setHabilidades(habilidadesDoAluno);
+        }
+
         return aluno;
     }
 
@@ -84,6 +103,16 @@ public class AlunoCodec implements CollectibleCodec<Aluno> {
             }
             documento.put("habilidades", habilidadesDocument);
         }
+
+        List<Nota> notas = aluno.getNotas();
+        if(notas != null) {
+            List<Double> notasParaSalvar = new ArrayList<>();
+            for (Nota nota : notas) {
+                notasParaSalvar.add(nota.getValor());
+            }
+            documento.put("notas", notasParaSalvar);
+        }
+
         codec.encode(writer, documento, encoder);
     }
 
