@@ -56,12 +56,8 @@ public class AlunoRepository {
 
         MongoCursor<Aluno> resultado = alunos.find().iterator();
 
-        List<Aluno> alunosEncontrados = new ArrayList<>();
-        while(resultado.hasNext()){
-            Aluno aluno = resultado.next();
-            alunosEncontrados.add(aluno);
-        }
-        cliente.close();
+        List<Aluno> alunosEncontrados = popularAlunos(resultado);
+        fecharConexao();
 
         return alunosEncontrados;
     }
@@ -74,6 +70,42 @@ public class AlunoRepository {
     }
 
 
+    public List<Aluno> pesquisaPor(String nome) {
+        criarConexao();
+        MongoCollection<Aluno> alunoCollection = this.bancoDeDados.getCollection("alunos", Aluno.class);
+        MongoCursor<Aluno> resultados = alunoCollection.find(Filters.eq("nome", nome), Aluno.class).iterator();
+        List<Aluno> alunos = popularAlunos(resultados);
 
+        fecharConexao();
+        return alunos;
+    }
 
+    private List<Aluno> popularAlunos(MongoCursor<Aluno> resultados) {
+        List<Aluno> alunos = new ArrayList<>();
+
+        while(resultados.hasNext()) {
+            alunos.add(resultados.next());
+        }
+        return alunos;
+    }
+
+    private void fecharConexao() {
+        this.cliente.close();
+    }
+
+    public List<Aluno> pesquisaPor(String classificacao, double nota) {
+        criarConexao();
+        MongoCollection<Aluno> alunoCollection = this.bancoDeDados.getCollection("alunos", Aluno.class);
+        MongoCursor<Aluno> resultados = null;
+
+        if(classificacao.equals("reprovados")) {
+            resultados = alunoCollection.find(Filters.lt("notas", nota)).iterator();
+        }else if(classificacao.equals("aprovados")) {
+            resultados = alunoCollection.find(Filters.gte("notas", nota)).iterator();
+        }
+        List<Aluno> alunos = popularAlunos(resultados);
+        fecharConexao();
+
+        return alunos;
+    }
 }
